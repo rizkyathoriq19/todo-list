@@ -219,8 +219,10 @@ export default window.customElements.define(
                 checkbox.setAttribute('type', 'checkbox');
                 checkbox.checked = item.completed;
 
-                checkbox.addEventListener('change', () => {
+                checkbox.addEventListener('change', async () => {
                     self.toggleComplete(index);
+                    await new Promise(r => setTimeout(r, 1000));
+                    self.markAsDone(index);
                 });
 
                 const taskText = document.createElement('span');
